@@ -58,19 +58,14 @@
       // Sample 1 {
       function theKingIsBlackPageCallback(n) {
         return {
-          type: 'image',
-          src: 'public/books/image/theKingIsBlack/'+(n+1)+'.jpg',
+          type: 'pdf',
+          src: '/books/pdf/FoxitPdfSdk.pdf',
           interactive: false
         };
       }
 
       $('#container').FlipBook({
-        pageCallback: theKingIsBlackPageCallback,
-        pages: 40,
-        propertiesCallback: function(props) {
-          props.cover.color = 0x000000;
-          return props;
-        },
+        pdf: '/books/pdf/FoxitPdfSdk.pdf',
         template: {
           html: 'templates/default-book-view.html',
           styles: [
