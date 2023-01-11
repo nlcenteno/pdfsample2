@@ -1,32 +1,52 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Sample PDF9</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/html2canvas.min.js"></script>
-    <script src="js/three.min.js"></script>
-    <script src="js/pdf.min.js"></script>
-    
-    <style>
-    html, body {
-        height: 100%;
-        margin: 0px;
+<head>
+<meta charset="utf-8">
+<title>Sample PDF 10</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/jquery.min.js"></script>
+</head>
+<body>
+<div class="source-link">
+  <a class="show-source" data="pdf-links-bookmarks">Show source code</a>
+</div>
+
+<div class="sample-container">
+
+</div>
+
+
+
+<script src="js/three.min.js"></script>
+<script src="js/pdf.min.js"></script>
+
+<script type="text/javascript">
+  window.PDFJS_LOCALE = {
+    pdfJsWorker: 'js/pdf.worker.js',
+    pdfJsCMapUrl: 'cmaps'
+  };
+</script>
+<script src="js/3dflipbook.min.js"></script>
+
+<script type="text/javascript">
+  $('.sample-container').FlipBook({
+    pdf: 'books/pdf/FoxitPdfSdk.pdf',
+    propertiesCallback: function(props) {
+      props.page.depth *= 0.7;
+      props.cover.padding = 0.002;
+      return props;
+    },
+    template: {"html":"templates\/default-book-view.html","styles":["css\/font-awesome.min.css","css\/black-book-view.css"],"script":"js\/default-book-view.js","sounds":{"startFlip":"sounds\/start-flip.mp3","endFlip":"sounds\/end-flip.mp3"}},
+    controlsProps: {
+      downloadURL: 'books/pdf/FoxitPdfSdk.pdf',
+      actions: {
+        cmdSmartPan: {
+          enabled: true,
+          enabledInNarrow: true
+        }
+      }
     }
-    .flip-book-container {
-        height: 100%;
-        background: #ffffff;
-    }
-    </style>
-
-    <script src="js/3dflipbook.min.js"></script>
-  </head>
-  <body>
-
- <div class="flip-book-container" src="books/pdf/FoxitPdfSdk.pdf">
-
-    </div>
-
-  </body>
+  });
+</script>
+</body>
 </html>
